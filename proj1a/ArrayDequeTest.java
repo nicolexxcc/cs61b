@@ -23,7 +23,7 @@ public class ArrayDequeTest {
         array.addLast(11);
         array.addLast(12);
 
-        array.removeLast();
+        System.out.println(array.removeLast());
 
         array.printDeque();
 

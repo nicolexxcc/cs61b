@@ -11,6 +11,7 @@ public class ArrayDeque<T> {
         size = 0;
         nextFirst = 0;
         nextLast = 1;
+        usage = size/items.length;
     }
 
     public void resize(int capacity) {
@@ -20,7 +21,6 @@ public class ArrayDeque<T> {
         items = i;
         nextFirst = nextFirst+capacity/2;
     }
-
 
     public void addFirst(T item) {
         if (size == items.length) {
@@ -93,5 +93,5 @@ public class ArrayDeque<T> {
     public T get(int index){
         return items[(nextFirst+1+index) % items.length];
     }
-    
+
 }
