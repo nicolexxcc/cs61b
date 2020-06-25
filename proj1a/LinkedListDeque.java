@@ -4,8 +4,8 @@
  *  can be expanded or contracted on both ends (either its front or its back).
  */
 
- public class LinkedListDeque<T> {
-     public class DequeNode {
+public class LinkedListDeque<T> {
+    private class DequeNode {
         private T item;
         private DequeNode prev;
         private DequeNode next;
@@ -59,7 +59,6 @@
         System.out.println();
     }
 
-    /* Removes and returns the item at the front of the deque. If no such item exists, returns null. */
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -71,7 +70,7 @@
         return firstItem;
     }
 
-    /* Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -102,11 +101,12 @@
     public T getRecursive(int index) {
         if (index < 0 || index > size - 1) {
             return null;
+        } else {
+            return getRecursiveHelper(sentinel.next, index);
         }
-        return getRecursiveHelper(sentinel.next, index);
     }
 
-    public T getRecursiveHelper(DequeNode d, int i) {
+    private T getRecursiveHelper(DequeNode d, int i) {
         if (i == 0) {
             return null;
         }

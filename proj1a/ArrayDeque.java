@@ -14,12 +14,12 @@ public class ArrayDeque<T> {
         usage = size / items.length;
     }
 
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] i = (T[]) new Object[capacity];
-        System.arraycopy(items,0, i,0, nextLast);
-        System.arraycopy(items, nextLast, i, nextLast+capacity/2, items.length-nextLast);
+        System.arraycopy(items, 0, i, 0, nextLast);
+        System.arraycopy(items, nextLast, i, nextLast + capacity / 2, items.length - nextLast);
         items = i;
-        nextFirst = nextFirst+capacity / 2;
+        nextFirst = nextFirst + capacity / 2;
     }
 
     public void addFirst(T item) {
