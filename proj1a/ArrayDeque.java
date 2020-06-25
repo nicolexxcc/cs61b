@@ -11,20 +11,20 @@ public class ArrayDeque<T> {
         size = 0;
         nextFirst = 0;
         nextLast = 1;
-        usage = size/items.length;
+        usage = size / items.length;
     }
 
     public void resize(int capacity) {
         T[] i = (T[]) new Object[capacity];
-        System.arraycopy(items,0,i,0,nextLast);
-        System.arraycopy(items,nextLast,i,nextLast+capacity/2,items.length-nextLast);
+        System.arraycopy(items,0, i,0, nextLast);
+        System.arraycopy(items, nextLast, i, nextLast+capacity/2, items.length-nextLast);
         items = i;
-        nextFirst = nextFirst+capacity/2;
+        nextFirst = nextFirst+capacity / 2;
     }
 
     public void addFirst(T item) {
         if (size == items.length) {
-            resize(2*size);
+            resize(2 * size);
         }
         size += 1;
         items[nextFirst] = item;
@@ -35,14 +35,14 @@ public class ArrayDeque<T> {
         if (i != 0) {
             i -= 1;
         } else {
-           i = items.length - 1;
+            i = items.length - 1;
         }
         return i;
     }
 
     public void addLast(T item) {
         if (size == items.length) {
-            resize(2*size);
+            resize(2 * size);
         }
         size += 1;
         items[nextLast] = item;
@@ -59,17 +59,17 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        return (size==0);
+        return (size == 0);
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
     /** problem!!!!!!!!!!  */
     public void printDeque() {
         for (int i = 0; i < size; i++) {
-            System.out.print(items[(nextFirst+1+i) % items.length] + " ");
+            System.out.print(items[(nextFirst + 1 + i) % items.length] + " ");
         }
         System.out.println();
     }
@@ -90,8 +90,8 @@ public class ArrayDeque<T> {
         return lastItem;
     }
 
-    public T get(int index){
-        return items[(nextFirst+1+index) % items.length];
+    public T get(int index) {
+        return items[(nextFirst + 1 + index) % items.length];
     }
 
 }

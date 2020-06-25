@@ -1,4 +1,3 @@
-import java.util.Deque;
 
 /** Deque (usually pronounced like “deck”) is an irregular acronym of double-ended queue.
  *  Double-ended queues are sequence containers with dynamic sizes that
@@ -6,10 +5,10 @@ import java.util.Deque;
  */
 
  public class LinkedListDeque<T> {
-    public class DequeNode {
-        public T item;
-        public DequeNode prev;
-        public DequeNode next;
+     public class DequeNode {
+        private T item;
+        private DequeNode prev;
+        private DequeNode next;
         public DequeNode(DequeNode m, T i, DequeNode n) {
             prev = m;
             item = i;
@@ -32,13 +31,13 @@ import java.util.Deque;
     public void addFirst(T item) {
         sentinel.next = new DequeNode(sentinel, item, sentinel.next);
         sentinel.next.next.prev = sentinel.next;     // why??
-        size ++;
+        size++;
     }
 
     public void addLast(T item) {
         sentinel.prev.next = new DequeNode(sentinel.prev, item, sentinel);
         sentinel.prev = sentinel.prev.next;
-        size ++;
+        size++;
 
     }
 
@@ -53,7 +52,7 @@ import java.util.Deque;
     /* Prints the items in the deque from first to last, separated by a space. */
     public void printDeque() {
         DequeNode d = sentinel;
-        while(d.next != sentinel) {
+        while (d.next != sentinel) {
             d = d.next;
             System.out.print(d.item + " ");
         }
@@ -66,11 +65,10 @@ import java.util.Deque;
             return null;
         }
         T firstItem = sentinel.next.item;
-        size -= 1;
-        return firstItem;
-
         sentinel.next.next.prev = sentinel;
         sentinel.next = sentinel.next.next;
+        size -= 1;
+        return firstItem;
     }
 
     /* Removes and returns the item at the back of the deque. If no such item exists, returns null. */
@@ -80,10 +78,9 @@ import java.util.Deque;
         }
         size -= 1;
         T lastItem = sentinel.prev.item;
-        return lastItem;
-
         sentinel.prev.prev.next = sentinel;
         sentinel.prev = sentinel.prev.prev;
+        return lastItem;
     }
 
     /* Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
@@ -106,13 +103,13 @@ import java.util.Deque;
         if (index < 0 || index > size - 1) {
             return null;
         }
-        return getRecursiveHelper(sentinel.next,index);
+        return getRecursiveHelper(sentinel.next, index);
     }
 
     public T getRecursiveHelper(DequeNode d, int i) {
         if (i == 0) {
             return null;
         }
-        return getRecursiveHelper(d.next, i-1);
+        return getRecursiveHelper(d.next, i - 1);
     }
 }
