@@ -17,20 +17,17 @@ public class Palindrome {
             reverse = reverse + word.charAt(i);
         }
 
-        if (word.equals(reverse)) {
-            return true;
-        } else {
-            return false;
-        }
+        return word.equals(reverse);
     }
 
-    public String dequeToString(Deque d) {
+    private String dequeToString(Deque d) {
         String words = "";
         while (d.size() > 0) {
             words += d.removeFirst();
         }
         return words;
     }
+
     public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque<Character> d = wordToDeque(word);
 
