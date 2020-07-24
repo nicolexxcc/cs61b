@@ -31,11 +31,11 @@ public class Percolation {
         WQU = new WeightedQuickUnionUF(N * N + 2);
     }
 
-    public int xyTo1D(int r, int c) {
+    private int xyTo1D(int r, int c) {
         return r * N * c;
     }
 
-    public void validate(int row, int col) {
+    private void validate(int row, int col) {
         if (row >= N || row < 0 || col >= N || col < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -95,7 +95,12 @@ public class Percolation {
     }
 
     public static void main(String[] args) {
-
+        Percolation p = new Percolation(12);
+        p.open(3, 4);
+        p.open(0, 2);
+        p.open(1, 2);
+        System.out.println(p.isFull(1, 2));
+        System.out.println(p.numberOfOpenSites());
     }
 
 }
