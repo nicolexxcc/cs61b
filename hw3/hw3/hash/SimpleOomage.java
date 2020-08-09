@@ -26,7 +26,7 @@ public class SimpleOomage implements Oomage {
         if (!USE_PERFECT_HASH) {
             return red + green + blue;
         } else {
-            int hashcode = red * 255 + green * 255^2 + blue * 255^3;
+            int hashcode = red / 5 * 10000 + green / 5 * 100 + blue / 5;
             return hashcode;
         }
     }
